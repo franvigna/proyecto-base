@@ -1,0 +1,134 @@
+@use "sass:color";
+
+/* Paleta base */
+$blue-primary: #2d6ee2;
+$green: #00bf6e;
+$purple: #926db4;
+
+/* Text */
+$text-light: #fff;
+
+/* Estilos comunes */
+$button-padding: 8px 16px;
+$button-border-radius: 4px;
+$button-font-size: 14px;
+$button-transition: all 0.2s ease-in-out;
+
+/* Hovers con la nueva API */
+$blue-primary-hover: color.scale($blue-primary, $lightness: -10%);
+$green-hover:      #ffffff;  
+$purple-hover:       color.scale($purple,       $lightness: -10%);
+
+
+.button {
+  padding: $button-padding;
+  border-radius: $button-border-radius;
+  font-size: $button-font-size;
+  transition: $button-transition;
+  border: 1px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &.outline {
+    background-color: transparent;
+  }
+
+  // Variantes
+  &.bluePrimary {
+    background-color: $blue-primary;
+    color: $text-light;
+    border-color: $blue-primary;
+
+    &:hover {
+      background-color: $blue-primary-hover;
+    }
+
+    &.outline {
+      color: $blue-primary;
+
+      &:hover {
+        background-color: $blue-primary;
+        color: $text-light;
+      }
+    }
+  }
+
+&.green {
+  background-color: $green;
+  color: $text-light;
+  border-color: $green;
+
+  // icono BLANCO por defecto
+  .icon {
+    filter: brightness(0) invert(1);
+    transition: filter 0.2s ease;
+  }
+
+  &:hover {
+    background-color: $green-hover;
+
+    // icono VERDE en hover
+    .icon {
+      filter: invert(52%) sepia(91%) saturate(423%) hue-rotate(102deg) brightness(95%) contrast(94%);
+    }
+  }
+
+  &.outline {
+    background-color: transparent;
+    color: $green;
+    border-color: $green;
+
+    // ícono verde por defecto en outline
+    .icon {
+      filter: invert(52%) sepia(91%) saturate(423%) hue-rotate(102deg) brightness(95%) contrast(94%);
+    }
+
+    &:hover {
+      background-color: $green;
+      color: $text-light;
+
+      // ícono blanco en hover para outline
+      .icon {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+}
+
+  &.purple {
+    background-color: $purple;
+    color: $text-light;
+    border-color: $purple;
+
+    &:hover {
+      background-color: $purple-hover;
+    }
+
+    &.outline {
+      color: $purple;
+
+      &:hover {
+        background-color: $purple;
+        color: $text-light;
+      }
+    }
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+
+    &.iconLeft {
+      order: -1; /* aparece antes del texto */
+    }
+
+    &.iconRight {
+      order: 1; /* aparece después del texto */
+    }
+  }
+}
+
